@@ -1,0 +1,58 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 30, 2022, 2:53:22 PM
+    Author     : Nandavahindra
+*/
+
+.bg-form{
+    -fx-background-color: linear-gradient(to top right, #191654, #43c6ac);
+}
+
+.bg-pop{
+    -fx-background-color:#fff;
+}
+
+.close2{
+    -fx-background-color: grey;
+    -fx-cursor:hand;
+}
+
+.close2:hover{
+    -fx-background-color:#55eac9;
+}
+
+.close{
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.close:hover{
+    -fx-background-color:#55eac9;
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-border-color: #191654;
+    -fx-border-width: 0px 0px .4px 0px;
+}
+
+.textfield:focused{
+    -fx-border-color:#55eac9;
+    -fx-text-inner-color:#fff;
+    -fx-border-width:0px 0px 1px 0px;
+}
+
+.hyperlink{
+    -fx-underline: false;
+    -fx-text-fill:#55eac9; 
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+}
+
+.hyperlink:hover{
+    -fx-text-fill: #fff;
+}
