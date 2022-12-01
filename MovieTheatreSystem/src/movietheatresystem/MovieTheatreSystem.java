@@ -18,8 +18,8 @@ import javafx.stage.StageStyle;
  */
 public class MovieTheatreSystem extends Application {
    
-    private double x = 0;
-    private double y = 0;
+    private double x ;
+    private double y ;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -30,20 +30,19 @@ public class MovieTheatreSystem extends Application {
         
         stage.initStyle(StageStyle.TRANSPARENT);
         
-         root.setOnMousePressed((MouseEvent event) ->{
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
-         
-        /* Blink BUG
-         root.setOnMouseDragged((MouseEvent event)->{
-             stage.setX(event.getSceneX() - x);
-             stage.setY(event.getSceneY()- y);
-         });*/
-        
-        
         stage.setScene(scene);
         stage.show();
+        
+         root.setOnMousePressed((MouseEvent event) ->{
+            x = stage.getX() - event.getScreenX();
+            y = stage.getY() - event.getScreenY();
+        });
+         
+         root.setOnMouseDragged((MouseEvent event)->{
+             stage.setX(event.getScreenX()+x);
+             stage.setY(event.getScreenY()+y);
+         });
+        
     }
 
     /**
