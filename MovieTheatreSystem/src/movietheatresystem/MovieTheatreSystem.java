@@ -40,9 +40,11 @@ public class MovieTheatreSystem extends Application {
          
          root.setOnMouseDragged((MouseEvent event)->{
              stage.setX(event.getScreenX()+x);
-             stage.setY(event.getScreenY()+y);
+             stage.setY(event.getScreenY()+y); 
          });
         
+         
+         
     }
 
     /**
