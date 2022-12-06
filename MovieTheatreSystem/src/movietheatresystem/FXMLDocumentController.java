@@ -29,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -148,7 +149,7 @@ public class FXMLDocumentController implements Initializable {
                         alert = new Alert(AlertType.ERROR);
                         alert.setTitle("Error Message");
                         alert.setHeaderText(null);
-                        alert.setContentText("Email already used!");
+                        alert.setContentText("Email has been used!");
                         alert.showAndWait();
                         return;
                     }
@@ -178,6 +179,9 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
+    private double x  = 0;
+    private double y = 0;
+    
     public void CheckData()
     {
         Alert alert;
@@ -199,6 +203,8 @@ public class FXMLDocumentController implements Initializable {
                 String forPswd = raf.readLine().substring(9);
                 if(sign_username.getText().equals(forUser) & sign_pass.getText().equals(forPswd))
                 {
+                    getData.username = sign_username.getText();
+                    
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
@@ -211,6 +217,18 @@ public class FXMLDocumentController implements Initializable {
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
+                    
+                    root.setOnMousePressed((MouseEvent event) ->{
+                    x = stage.getX() - event.getScreenX();
+                    y = stage.getY() - event.getScreenY();
+                    });
+         
+                    root.setOnMouseDragged((MouseEvent event)->{
+                    stage.setX(event.getScreenX()+x);
+                    stage.setY(event.getScreenY()+y); 
+                    });
+                    
+                    stage.initStyle(StageStyle.TRANSPARENT);
 
                     stage.setScene(scene);
                     stage.show();
@@ -280,6 +298,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void login()
     {
+        createFolder();
         readFile();
         countLines();
         CheckData();

@@ -1,0 +1,74 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 6, 2022, 12:00:49 PM
+    Author     : Nandavahindra
+*/
+
+.top-form{
+    -fx-background-color: #fff;
+    -fx-border-color: #000;
+    -fx-border-width: .2px .2px .4px .2px;
+}
+
+.close_button{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+.close_button:hover{
+    -fx-background-color: #55eac9;
+    
+}
+
+.bg_left{
+    -fx-background-color: linear-gradient(to top, #191654, #43c6ac);
+}
+
+.left_button{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.left_button:hover{
+    -fx-background-color: #6dd1b8;
+}
+
+.center_bg{
+    -fx-background-color: linear-gradient(to top, #b4b4b4, #fff);
+}
+
+.bg_white{
+    -fx-background-color: #fff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 8,0,0,0);
+    -fx-background-radius: 8px;
+}
+
+.bg_white:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.label_info{
+    -fx-border-color: #55eac9;
+    -fx-border-radius: 0px 5px 0px 0px;
+    -fx-border-width: .8px;
+    -fx-padding: .8px;
+    -fx-font-size: 14px;
+    
+}
+
+.buy_btn{
+    -fx-background-color: #191654;
+    -fx-text-fill: #fff;
+    -fx-cursor: hand;
+}
+
+.buy_btn:hover{
+    -fx-background-color: #43c6ac;
+    
+}
