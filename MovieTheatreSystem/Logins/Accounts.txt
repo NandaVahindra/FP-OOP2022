@@ -2,18 +2,6 @@ Username:admin
 Password:admin
 Email:admin
 
-Username:nanda
+Username:Nanda
 Password:123
-Email:nanda
-
-Username:nandawija
-Password:123
-Email:nandavahindra
-
-Username:guest
-Password:1234
-Email:akunbaru123
-
-Username:guest1
-Password:12345
-Email:akun1
+Email:nandavahindra@nv.com

@@ -5,22 +5,13 @@
 package movietheatresystem;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  *
  * @author Nandavahindra
  */
 public class movies {
-    private String title;
-    private String genre;
-    private String image;
-    private Date date;
-            
-     public movies (String title, String genre, String image, Date date)
-     {
-         this.title = title;
-         this.genre = genre;
-         this.image = image;
-         this.date = date;
-     }
+    private static String cinemaClass;
+     
 }

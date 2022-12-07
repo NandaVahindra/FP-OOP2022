@@ -4,22 +4,29 @@
  */
 package movietheatresystem;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -44,10 +51,7 @@ public class dashboardController implements Initializable{
     private AnchorPane page_booking;
     @FXML
     private DatePicker book_date;
-    @FXML
-    private ChoiceBox<?> book_movie;
-    @FXML
-    private Spinner<?> book_quantity;
+    private ComboBox<?> book_movie;
     @FXML
     private Button book_buy;
     @FXML
@@ -80,6 +84,12 @@ public class dashboardController implements Initializable{
     private AnchorPane nowshowing;
     @FXML
     private AnchorPane dashboardForm;
+    @FXML
+    private TextField book_intQuantity;
+    @FXML
+    private ComboBox book_movies;
+    @FXML
+    private FontAwesomeIcon qtycheck_btn;
 
     @FXML
     public void close(){
@@ -91,9 +101,32 @@ public class dashboardController implements Initializable{
         stage.setIconified(true);
     }
     
+    HashMap<String,String> movieGenre = new HashMap();
+    HashMap<String,Image> movieImage = new HashMap();
+    Alert alert;
+    
+    public void storemovie()
+    {
+        movieGenre.put("The Friendship Game","Horror");
+        movieGenre.put("Me Time","Comedy");
+        movieGenre.put("Your Name","Romance");
+        movieGenre.put("Spider-Man: No Way Home","Action");
+    }
+    public void storeimg()
+    {
+        Image hrr = new Image("/image/Horror.jpg");
+        Image cdy = new Image("/image/Comedy.jpg");
+        Image rmc = new Image("/image/Romance.jpg");
+        Image acn = new Image("/image/Action.jpg");
+        movieImage.put("The Friendship Game",hrr);
+        movieImage.put("Me Time",cdy);
+        movieImage.put("Your Name",rmc);
+        movieImage.put("Spider-Man: No Way Home",acn);
+    }
+
     public void displayUsername()
     {
-        nav_username.setText(getData.username);
+        nav_username.setText(getData.getUsername());
     }
     
     @FXML
@@ -120,7 +153,7 @@ public class dashboardController implements Initializable{
     
     private double x = 0;
     private double y = 0;
-    
+    private String cinemaClass;
     @FXML
     public void theatreSelect(ActionEvent event)
     {
@@ -128,15 +161,20 @@ public class dashboardController implements Initializable{
         {
             page_select.setVisible(false);
             page_booking.setVisible(true);
+            cinemaClass = "Regular";
+            clear();
             
         }
         else if(event.getSource() == select_exclusive)
         {
             page_select.setVisible(false);
             page_booking.setVisible(true);
+            cinemaClass = "Exclusive";
+            clear();
         }
     }
     
+    @FXML
     public void signOut()
     {
         dashboardForm.getScene().getWindow().hide();
@@ -165,9 +203,135 @@ public class dashboardController implements Initializable{
         }
         
     }
+    
+    Ticket ti = new Ticket();
+    
+    private String[] movieList = {"The Friendship Game", "Me Time", "Spider-Man: No Way Home", "Your Name"};
+    @FXML
+    public void comboBox(ActionEvent event)
+    {
+        String s = book_movies.getSelectionModel().getSelectedItem().toString();
+        detmov_title.setText(s);
+        detmov_genre.setText(movieGenre.get(s));
+        detmov_img.setImage(movieImage.get(s));
+        ti.Ticket(movieGenre.get(s),cinemaClass);
+        detmov_ticketprice.setText(Integer.toString(ti.getTicketPrice()));
+        
+        
+    }
+    
+    @FXML
+    public void setDate(ActionEvent event)
+    {
+        getData.setDate(book_date.getValue());
+        detmov_date.setText(getData.getDate().toString());
+    }
+    
+    @FXML
+    public void quantityCheck(ActionEvent event)
+    {
+        try{
+            getData.setQuantity(Integer.parseInt(book_intQuantity.getText()));
+        }
+        catch(Exception e){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter the correct number!");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(book_intQuantity.getText().isEmpty() || book_intQuantity.getText().equals("0"))
+        {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter the correct number!");
+            alert.showAndWait();
+            return;
+        }
+        else if(detmov_ticketprice.getText().equals("Ticket Price"))
+        {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a movie first!");
+            alert.showAndWait();
+            return;
+        }
+        else if(cinemaClass.equals("Regular") && getData.getQuantity() > 60)
+        {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Exceed the maximum amount!");
+            alert.showAndWait();
+            return;
+        }
+        else if(cinemaClass.equals("Exclusive") && getData.getQuantity() > 30)
+        {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Exceed the maximum amount!");
+            alert.showAndWait();
+            return;
+        }
+            detmov_total.setText(Integer.toString(getData.getQuantity()*ti.getTicketPrice()));
+         
+    }
+    
+    @FXML
+    public void clear()
+    {
+        detmov_title.setText("Movie Title");
+        detmov_genre.setText("Genre");
+        detmov_img.setImage(null);
+        detmov_ticketprice.setText("Ticket Price");
+        detmov_date.setText("Date");
+        book_date.getEditor().clear();
+        book_intQuantity.setText("");
+        detmov_total.setText("Total Price");
+        
+    }
+    
+    public void buy()
+    {
+        if(detmov_title.getText().equals("Movie Title") || detmov_genre.getText().equals("Genre") || 
+           detmov_date.getText().equals("Date") || detmov_ticketprice.getText().equals("Ticket Price") || 
+           detmov_total.getText().equals("Total Price"))
+        {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Make sure data on the right side in correct!");
+            alert.showAndWait();
+            return;
+        }
+        else
+        {
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Proceed your payment?");
+            alert.showAndWait();
+        }
+        alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Payment Success");
+            alert.showAndWait();
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> list = FXCollections.observableArrayList(movieList);
+        book_movies.setItems(list);
         displayUsername();
+        storemovie();
+        storeimg();
+        
     }
     
 }

@@ -181,6 +181,7 @@ public class FXMLDocumentController implements Initializable {
     
     private double x  = 0;
     private double y = 0;
+
     
     public void CheckData()
     {
@@ -203,8 +204,8 @@ public class FXMLDocumentController implements Initializable {
                 String forPswd = raf.readLine().substring(9);
                 if(sign_username.getText().equals(forUser) & sign_pass.getText().equals(forPswd))
                 {
-                    getData.username = sign_username.getText();
                     
+                    getData.setUsername(sign_username.getText());
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
