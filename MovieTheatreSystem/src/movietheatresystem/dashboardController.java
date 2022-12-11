@@ -324,7 +324,7 @@ public class dashboardController implements Initializable{
         try{
             getData.setQuantity(Integer.parseInt(book_intQuantity.getText()));
         }
-        catch(Exception e){
+        catch(NumberFormatException e){
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);

@@ -469,22 +469,22 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <Text layoutX="109.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Friendship Game" textAlignment="CENTER">
+                              <Text layoutX="109.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Friendship Game" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="352.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Me Time" textAlignment="CENTER">
+                              <Text layoutX="352.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Me Time" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="499.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spider-Man: No Way Home" textAlignment="CENTER">
+                              <Text layoutX="499.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spider-Man: No Way Home" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="767.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Name" textAlignment="CENTER">
+                              <Text layoutX="767.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Name" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
