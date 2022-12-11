@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Nandavahindra
  */
 public class getData {
+    private static String movieName;
     private static String username;
     private static LocalDate date;
     private static int quantity;
@@ -36,6 +37,11 @@ public class getData {
     public static int getQuantity() {
         return quantity;
     }
+    
+    public static int getQueantity(String dsc)
+    {
+        return quantity + 1;
+    }
 
     /**
      * @param aQuantity the quantity to set
@@ -56,6 +62,20 @@ public class getData {
      */
     public static void setDate(LocalDate aDate) {
         date = aDate;
+    }
+
+    /**
+     * @return the movieName
+     */
+    public static String getMovieName() {
+        return movieName;
+    }
+
+    /**
+     * @param aMovieName the movieName to set
+     */
+    public static void setMovieName(String aMovieName) {
+        movieName = aMovieName;
     }
 
     

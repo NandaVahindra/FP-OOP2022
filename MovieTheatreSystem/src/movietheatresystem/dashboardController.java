@@ -8,6 +8,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +23,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
@@ -90,6 +94,84 @@ public class dashboardController implements Initializable{
     private ComboBox book_movies;
     @FXML
     private FontAwesomeIcon qtycheck_btn;
+    @FXML
+    private Spinner<?> book_quantity;
+    @FXML
+    private Button info_close;
+    @FXML
+    private AnchorPane information_box;
+    @FXML
+    private Hyperlink hype_close;
+    @FXML
+    private Label re_mov;
+    @FXML
+    private Label re_date;
+    @FXML
+    private Label re_price;
+    @FXML
+    private Label re_tot;
+    @FXML
+    private Label re_code;
+    @FXML
+    private Label re_user;
+    @FXML
+    private AnchorPane receipt;
+    @FXML
+    private Button re_back;
+    @FXML
+    private AnchorPane Page_receipt;
+    @FXML
+    private AnchorPane fsg_preview;
+    @FXML
+    private Button fsg_close;
+    @FXML
+    private AnchorPane mt_preview;
+    @FXML
+    private Button mt_close;
+    @FXML
+    private AnchorPane spd_preview;
+    @FXML
+    private Button spd_close;
+    @FXML
+    private AnchorPane yn_preview;
+    @FXML
+    private Button yn_close;
+    @FXML
+    private ImageView ns_fsg;
+    @FXML
+    private ImageView ns_mt;
+    @FXML
+    private ImageView ns_spd;
+    @FXML
+    private ImageView ns_yn;
+    @FXML
+    private ImageView img_fsg;
+    @FXML
+    private ImageView img_mt;
+    @FXML
+    private ImageView img_spd;
+    @FXML
+    private ImageView img_yn;
+    @FXML
+    private AnchorPane fsg;
+    @FXML
+    private AnchorPane mt;
+    @FXML
+    private AnchorPane spd;
+    @FXML
+    private AnchorPane yn;
+    
+    @FXML
+    public void close_info()
+    {
+        information_box.setVisible(false);
+    }
+    
+    @FXML
+    public void hyp_info()
+    {
+        information_box.setVisible(true);
+    }
 
     @FXML
     public void close(){
@@ -122,13 +204,21 @@ public class dashboardController implements Initializable{
         movieImage.put("Me Time",cdy);
         movieImage.put("Your Name",rmc);
         movieImage.put("Spider-Man: No Way Home",acn);
+        ns_fsg.setImage(hrr);
+        ns_mt.setImage(cdy);
+        ns_spd.setImage(acn);
+        ns_yn.setImage(rmc);
+        img_fsg.setImage(hrr);
+        img_mt.setImage(cdy);
+        img_spd.setImage(acn);
+        img_yn.setImage(rmc);
     }
 
     public void displayUsername()
     {
         nav_username.setText(getData.getUsername());
     }
-    
+      
     @FXML
     public void navigationSelect(ActionEvent event)
     {
@@ -204,18 +294,19 @@ public class dashboardController implements Initializable{
         
     }
     
-    Ticket ti = new Ticket();
+    Ticket ti = new Ticket(); 
     
-    private String[] movieList = {"The Friendship Game", "Me Time", "Spider-Man: No Way Home", "Your Name"};
+    private String[] movieList = {"The Friendship Game", "Me Time", "Spider-Man: No Way Home", "Your Name"}; //save to arraylist
     @FXML
     public void comboBox(ActionEvent event)
     {
         String s = book_movies.getSelectionModel().getSelectedItem().toString();
+        getData.setMovieName(s);
         detmov_title.setText(s);
         detmov_genre.setText(movieGenre.get(s));
         detmov_img.setImage(movieImage.get(s));
         ti.Ticket(movieGenre.get(s),cinemaClass);
-        detmov_ticketprice.setText(Integer.toString(ti.getTicketPrice()));
+        detmov_ticketprice.setText("Rp " + Integer.toString(ti.getTicketPrice()));
         
         
     }
@@ -278,7 +369,7 @@ public class dashboardController implements Initializable{
             alert.showAndWait();
             return;
         }
-            detmov_total.setText(Integer.toString(getData.getQuantity()*ti.getTicketPrice()));
+            detmov_total.setText("Rp " + Integer.toString(getData.getQuantity()*ti.getTicketPrice()));
          
     }
     
@@ -296,6 +387,7 @@ public class dashboardController implements Initializable{
         
     }
     
+    @FXML
     public void buy()
     {
         if(detmov_title.getText().equals("Movie Title") || detmov_genre.getText().equals("Genre") || 
@@ -311,17 +403,40 @@ public class dashboardController implements Initializable{
         }
         else
         {
-            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Message");
             alert.setHeaderText(null);
             alert.setContentText("Proceed your payment?");
-            alert.showAndWait();
+            if (alert.showAndWait().get() != ButtonType.OK)
+            return;
         }
         alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
             alert.setHeaderText(null);
             alert.setContentText("Payment Success");
             alert.showAndWait();
+        
+        Page_receipt.setVisible(true);
+        page_booking.setVisible(false);
+        int tic = 100;
+        Random rd = new Random();
+        int int_random = rd.nextInt(tic);
+        
+        re_user.setText(getData.getUsername());
+        re_mov.setText(getData.getMovieName());
+        re_date.setText(getData.getDate().toString());
+        re_price.setText("Rp " + Integer.toString(ti.getTicketPrice()));
+        re_tot.setText("Rp " + Integer.toString(ti.getTicketPrice() * getData.getQuantity()));
+        re_code.setText("2210129374" + int_random);
+        
+    }
+    
+    @FXML
+    public void back_dash()
+    {
+        Page_receipt.setVisible(false);
+        page_select.setVisible(true);
+        
     }
     
     @Override
@@ -332,6 +447,10 @@ public class dashboardController implements Initializable{
         storemovie();
         storeimg();
         
+    }
+
+    @FXML
+    private void now_showingSelect(MouseEvent event) {
     }
     
 }

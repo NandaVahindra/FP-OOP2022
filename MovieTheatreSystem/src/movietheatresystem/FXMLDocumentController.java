@@ -96,11 +96,11 @@ public class FXMLDocumentController implements Initializable {
     {
         try {
             FileReader fr = new FileReader(f+"\\Accounts.txt");
-            System.out.println("file exists!");
+            //System.out.println("file exists!");
         } catch (FileNotFoundException ex) {
             try {
                 FileWriter fw = new FileWriter(f+"\\Accounts.txt");
-                System.out.println("file created");
+                //System.out.println("file created");
             } catch (IOException ex1) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex1);
             }
@@ -110,6 +110,7 @@ public class FXMLDocumentController implements Initializable {
     public void addData(String usr, String pswd, String mail)
     {
         Alert alert;
+        //check if sign up data field is empty
         if(usr.isEmpty() || pswd.isEmpty() || mail.isEmpty())
         {
             alert = new Alert(AlertType.ERROR);
@@ -139,6 +140,7 @@ public class FXMLDocumentController implements Initializable {
                         return;
                     }
                 }
+                //checking if email already in use
                 else if(i==eml)
                 {
                     String forEmail = raf.readLine().substring(6);
@@ -199,7 +201,7 @@ public class FXMLDocumentController implements Initializable {
             RandomAccessFile raf = new RandomAccessFile(f+"\\Accounts.txt", "rw");
             for(int i=0;i<ln;i+=4)
             {
-            System.out.println("count "+i);
+            //System.out.println("count "+i);
                 String forUser = raf.readLine().substring(9);
                 String forPswd = raf.readLine().substring(9);
                 if(sign_username.getText().equals(forUser) & sign_pass.getText().equals(forPswd))
@@ -265,7 +267,7 @@ public class FXMLDocumentController implements Initializable {
             {
                 ln++;
             }
-            System.out.println("Numbers of line: " +ln);
+            //System.out.println("Numbers of line: " +ln);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

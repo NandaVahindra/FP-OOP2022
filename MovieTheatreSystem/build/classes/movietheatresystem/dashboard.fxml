@@ -4,14 +4,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="dashboardForm" prefHeight="656.0" prefWidth="1249.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movietheatresystem.dashboardController">
    <children>
@@ -86,29 +90,6 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="center_bg" stylesheets="@dashboardDesain.css" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="610.4" prefWidth="1009.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane layoutX="177.0" layoutY="120.0" prefHeight="370.0" prefWidth="655.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
-                           <children>
-                              <Label alignment="CENTER" layoutX="257.0" layoutY="14.0" text="Receipt">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="95.0" layoutY="120.0" text="Movie Title :" />
-                              <Label alignment="CENTER_RIGHT" layoutX="104.0" layoutY="151.0" prefHeight="18.0" prefWidth="56.0" text="Genre :" />
-                              <Label layoutX="183.0" layoutY="117.0" prefHeight="18.0" prefWidth="211.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Movie Title" />
-                              <Label layoutX="183.0" layoutY="148.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Movie Genre" />
-                              <Label alignment="CENTER_RIGHT" layoutX="104.0" layoutY="181.0" prefHeight="18.0" prefWidth="56.0" text="Date :" />
-                              <Label layoutX="183.0" layoutY="178.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Date" />
-                              <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="211.0" prefHeight="18.0" prefWidth="98.0" text="Ticket Price :" />
-                              <Label layoutX="183.0" layoutY="208.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Ticket Price" />
-                              <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="239.0" prefHeight="18.0" prefWidth="98.0" text="Total :" />
-                              <Label layoutX="183.0" layoutY="236.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Total Price" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
                   <AnchorPane fx:id="page_booking" layoutX="68.0" layoutY="58.0" prefHeight="610.4" prefWidth="1009.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="582.0" prefWidth="483.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
@@ -166,7 +147,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="page_select" prefHeight="610.4" prefWidth="1009.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_select" prefHeight="610.4" prefWidth="1009.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label alignment="CENTER" layoutX="348.0" layoutY="69.0" text="Select Theatre">
                            <font>
@@ -195,15 +176,319 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="nowshowing" layoutX="81.0" layoutY="77.0" prefHeight="610.4" prefWidth="1009.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="Page_receipt" prefHeight="610.4" prefWidth="1009.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane fx:id="receipt" layoutX="158.0" layoutY="97.0" prefHeight="370.0" prefWidth="641.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                           <children>
+                              <Label alignment="CENTER" layoutX="170.0" layoutY="24.0" text="Receipt">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="178.0" text="Movie Title :" />
+                              <Label fx:id="re_mov" layoutX="172.0" layoutY="175.0" prefHeight="18.0" prefWidth="211.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Movie Title" />
+                              <Label alignment="CENTER_RIGHT" layoutX="92.0" layoutY="208.0" prefHeight="18.0" prefWidth="56.0" text="Date :" />
+                              <Label fx:id="re_date" layoutX="171.0" layoutY="205.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Date" />
+                              <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="238.0" prefHeight="18.0" prefWidth="98.0" text="Ticket Price :" />
+                              <Label fx:id="re_price" layoutX="171.0" layoutY="235.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Ticket Price" />
+                              <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="270.0" prefHeight="18.0" prefWidth="98.0" text="Total :" />
+                              <Label fx:id="re_tot" layoutX="170.0" layoutY="267.0" prefHeight="18.0" prefWidth="210.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Total Price" />
+                              <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="147.0" text="Payment Code :" />
+                              <Label fx:id="re_code" layoutX="171.0" layoutY="144.0" prefHeight="18.0" prefWidth="211.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="xxxxxxxxxxxxxx" />
+                              <Label alignment="CENTER_RIGHT" layoutX="109.0" layoutY="116.0" text="Name :" />
+                              <Label fx:id="re_user" layoutX="170.0" layoutY="113.0" prefHeight="18.0" prefWidth="211.0" styleClass="label_info" stylesheets="@dashboardDesain.css" text="Username" />
+                              <Line endX="100.0" layoutX="240.0" layoutY="82.0" startX="-100.0" />
+                              <Hyperlink fx:id="hype_close" layoutX="170.0" layoutY="310.0" onAction="#hyp_info" text="Information" />
+                              <Line endX="18.00006103515625" endY="231.39999389648438" layoutX="495.0" layoutY="147.0" startX="18.00006103515625" startY="-147.0" />
+                              <Line endX="18.00006103515625" endY="236.80001831054688" layoutX="593.0" layoutY="141.0" startX="18.00006103515625" startY="-140.0" />
+                              <Text layoutX="442.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="vertical_rotate" text="CINEMA 4X" wrappingWidth="232.21949768066406">
+                                 <font>
+                                    <Font size="45.0" />
+                                 </font>
+                              </Text>
+                              <AnchorPane fx:id="information_box" layoutX="123.0" layoutY="34.0" prefHeight="258.0" prefWidth="446.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" visible="false">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="192.0" layoutY="24.0" text="Information" />
+                                    <Button fx:id="info_close" layoutX="400.0" mnemonicParsing="false" onAction="#close_info" prefHeight="24.0" prefWidth="46.0">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <Text layoutX="42.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. complete your payment immediately within 2 hours so that the booking can be processed" wrappingWidth="270.9366455078125" />
+                                    <Text layoutX="42.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. The payment code will be used when you want to pick up a ticket at the cinema, so please note it down" wrappingWidth="270.9366455078125" />
+                                    <Text layoutX="42.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Seat selection will be made when picking up tickets at the cinema" wrappingWidth="270.9366455078125" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="re_back" layoutX="446.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_dash" prefHeight="12.0" prefWidth="117.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" text="Back to dashboard" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="nowshowing" layoutX="81.0" layoutY="77.0" prefHeight="610.4" prefWidth="1009.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="582.0" prefWidth="983.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
                            <children>
-                              <Label layoutX="393.0" layoutY="14.0" text="Now Showing">
+                              <Label layoutX="348.0" layoutY="37.0" prefHeight="88.0" prefWidth="286.0" text="Now Showing">
                                  <font>
-                                    <Font name="System Bold" size="30.0" />
+                                    <Font name="System Bold" size="42.0" />
                                  </font>
                               </Label>
+                              <AnchorPane fx:id="fsg" layoutX="94.0" layoutY="154.0" onMouseClicked="#now_showingSelect" prefHeight="226.0" prefWidth="158.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                 <children>
+                                    <ImageView fx:id="ns_fsg" fitHeight="251.0" fitWidth="169.0" onMouseClicked="#now_showingSelect" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/horror_fsgame.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="mt" layoutX="297.0" layoutY="154.0" prefHeight="226.0" prefWidth="158.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                 <children>
+                                    <ImageView fx:id="ns_mt" fitHeight="251.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/metimecomedy.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="spd" layoutX="506.0" layoutY="154.0" prefHeight="226.0" prefWidth="158.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                 <children>
+                                    <ImageView fx:id="ns_spd" fitHeight="251.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/nowayhome.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="yn" layoutX="720.0" layoutY="154.0" prefHeight="226.0" prefWidth="158.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                 <children>
+                                    <ImageView fx:id="ns_yn" fitHeight="251.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/romance_yourname.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="fsg_preview" layoutX="94.0" layoutY="37.0" prefHeight="508.0" prefWidth="795.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" visible="false">
+                                 <children>
+                                    <Button fx:id="fsg_close" layoutX="372.0" layoutY="480.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="51.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <ImageView fx:id="img_fsg" fitHeight="337.0" fitWidth="231.0" layoutX="58.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/horror_fsgame.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Line endX="-100.0" endY="389.0000305175781" layoutX="417.0" layoutY="59.0" startX="-100.0" />
+                                    <Label layoutX="81.0" layoutY="404.0" text="The Friendship Game">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="343.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teens in a small town come across an object with mysterious cosmic powers and a baffling sort of consciousness. Over the course of a night, the object tests their loyalties and unravels the mystery about their missing friend." wrappingWidth="416.2808837890625">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="343.0" layoutY="89.0" text="Synopsis :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="344.0" layoutY="245.0" text="Director : Scooter Corkle">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="272.0" text="Producer : Daniel Bekerman">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="299.0" text="Language : English">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="345.0" layoutY="326.0" text="Duration : 87 min">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="mt_preview" layoutX="94.0" layoutY="38.0" prefHeight="508.0" prefWidth="795.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" visible="false">
+                                 <children>
+                                    <Button fx:id="mt_close" layoutX="372.0" layoutY="480.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="51.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <ImageView fx:id="img_mt" fitHeight="337.0" fitWidth="231.0" layoutX="58.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/metimecomedy.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Line endX="-100.0" endY="389.0000305175781" layoutX="417.0" layoutY="59.0" startX="-100.0" />
+                                    <Label alignment="CENTER" layoutX="133.0" layoutY="405.0" text="Me Time">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="343.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="With his family away, a stay-at-home dad enjoys his first me-time in years by reconnecting with an old friend for a wild weekend that may upend his life." wrappingWidth="416.2808837890625">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="343.0" layoutY="89.0" text="Synopsis :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="344.0" layoutY="245.0" text="Director : John Hamburg">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="272.0" text="Producer : Kevin Hart, John Hamburg, Bryan Smiley">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="299.0" text="Language : English">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="345.0" layoutY="326.0" text="Duration : 101 min">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="spd_preview" layoutX="94.0" layoutY="39.0" prefHeight="508.0" prefWidth="795.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" visible="false">
+                                 <children>
+                                    <Button fx:id="spd_close" layoutX="372.0" layoutY="480.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="51.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <ImageView fx:id="img_spd" fitHeight="337.0" fitWidth="231.0" layoutX="58.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/nowayhome.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Line endX="-100.0" endY="389.0000305175781" layoutX="417.0" layoutY="59.0" startX="-100.0" />
+                                    <Label alignment="CENTER" layoutX="54.0" layoutY="402.0" text="Spider Man: No Way Home">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="343.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spider-Man seeks the help of Doctor Strange to forget his exposed secret identity as Peter Parker. However, Strange's spell goes horribly wrong, leading to unwanted guests entering their universe." wrappingWidth="416.2808837890625">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="343.0" layoutY="89.0" text="Synopsis :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="344.0" layoutY="245.0" text="Director : Jon Watts">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="272.0" text="Producer : Kevin Feige, Amy Pascal">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="299.0" text="Language : English">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="345.0" layoutY="326.0" text="Duration : 148 min">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="yn_preview" layoutX="94.0" layoutY="39.0" prefHeight="508.0" prefWidth="795.0" styleClass="bg_white" stylesheets="@dashboardDesain.css" visible="false">
+                                 <children>
+                                    <Button fx:id="yn_close" layoutX="372.0" layoutY="480.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="51.0" styleClass="bg_white" stylesheets="@dashboardDesain.css">
+                                       <graphic>
+                                          <FontAwesomeIcon glyphName="CLOSE" />
+                                       </graphic>
+                                    </Button>
+                                    <ImageView fx:id="img_yn" fitHeight="337.0" fitWidth="231.0" layoutX="58.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" styleClass="bg_white">
+                                       <image>
+                                          <Image url="@../../movie/romance_yourname.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Line endX="-100.0" endY="389.0000305175781" layoutX="417.0" layoutY="59.0" startX="-100.0" />
+                                    <Label alignment="CENTER" layoutX="122.0" layoutY="404.0" text="Your Name">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="343.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Two teenagers share a profound, magical connection upon discovering they are swapping bodies. Things manage to become even more complicated when the boy and girl decide to meet in person." wrappingWidth="416.2808837890625">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="343.0" layoutY="89.0" text="Synopsis :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="344.0" layoutY="245.0" text="Director : Makoto Shinkai">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="272.0" text="Producer : Koichiro Ito, Katsuhiro Takei">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="343.0" layoutY="299.0" text="Language : Japanese">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="345.0" layoutY="326.0" text="Duration : 107 min">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Text layoutX="109.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Friendship Game" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="352.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Me Time" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="499.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spider-Man: No Way Home" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="767.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Name" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                      </children>

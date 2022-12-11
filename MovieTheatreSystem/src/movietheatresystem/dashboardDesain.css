@@ -72,3 +72,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #43c6ac;
     
 }
+
+.vertical_rotate{
+    -fx-rotate: -90;
+}

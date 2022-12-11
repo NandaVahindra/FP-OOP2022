@@ -8,9 +8,10 @@ package movietheatresystem;
  *
  * @author Nandavahindra
  */
-public class Ticket {
+public class Ticket implements InterfaceTicket{
     private Genre g;
     
+    @Override
     public void Ticket(String genre, String cinema)
     {
         switch(genre)
@@ -39,6 +40,7 @@ public class Ticket {
         return g.getTicketPrice();
     }
     
+    @Override
     public void ResetPrice()
     {
         g.setTicketPrice(0);

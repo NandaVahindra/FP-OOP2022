@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/action.java</file>
-            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/romance.java</file>
-            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/movies.java</file>
+            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/InterfaceTicket.java</file>
+            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/abstractGenre.java</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/Ticket.java</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/Genre.java</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/dashboardController.java</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/getData.java</file>
+            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/dashboardDesain.css</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/horror.java</file>
             <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/MovieTheatreSystem.java</file>
-            <file>file:/C:/Users/Nandavahindra/Documents/NetBeansProjects/FP-OOP2022/MovieTheatreSystem/src/movietheatresystem/comedy.java</file>
         </group>
     </open-files>
 </project-private>
