@@ -4,6 +4,9 @@
 ### Nama    : Made Nanda Wija Vahindra  
 ### NRP     : 5025211160  
 
+![image](https://user-images.githubusercontent.com/114988957/207270584-724c23b1-407f-40ac-9e33-4872246e401d.png)
+
+
 Rencana project yang ingin saya buat adalah pembelian tiket bioskop. User diminta untuk mengisikan identitas diri kemudian memilih tipe teater yang ingin dipesan. User juga menginput hari, jumlah tiket yang ingin dibeli. Kemudian diberikan beberapa judul film dengan harga yang bervariasi bergantung pada tipe teater dan hari yang ingin dipesan. lalu user memilih waktu yang telah disediakan. kemudian proses untuk total pembayaran. cetak struk pembayaran, total, dan kode untuk pembayaran  
 Referensi   : https://www.youtube.com/watch?v=-Y6PwX6IQwQ&t=1214s  
 Demo Aplikasi : https://youtu.be/nYeEtwfgVYE
