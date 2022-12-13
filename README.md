@@ -105,3 +105,7 @@ Exception Handling banyak digunakan untuk input output menggunakan RandomAccessF
 ### 12. GUI  
 Nama file : FXMLDocument.fxml dan dashboard.fxml  
 membuat user interface menggunakan sceneBuilder dan library tambahan yaitu fontawesomefx-8.2.jar
+
+### 13. ArrayList
+Nama file : dashboardController.java
+Memakai Observable Array List untuk Set item pada combo box dengan Array yang telah dibuat
